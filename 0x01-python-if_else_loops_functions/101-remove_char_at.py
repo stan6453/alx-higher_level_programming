@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 def remove_char_at(str1, n):
     if n > len(str1) or n < 0:
         return str1
