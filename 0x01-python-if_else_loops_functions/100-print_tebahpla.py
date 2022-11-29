@@ -4,4 +4,4 @@ for number in reversed(range(97, 123)):
         pass
     else:
         number = number - 32
-    print(f"{number:c}", end="")
+    print("{number:c}".format(number), end="")
