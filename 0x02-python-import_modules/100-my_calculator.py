@@ -11,7 +11,7 @@ if len(sys.argv) != 4:
 operator = sys.argv[2]
 
 if operator not in ('+', '-', '*', '/'):
-    print(f"Unknown operator. Available operators: +, -, * and /")
+    print(f"Unknown operators. Available operators: +, -, * and /")
     sys.exit(1)
 
 a = int(sys.argv[1])
