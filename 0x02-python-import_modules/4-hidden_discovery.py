@@ -15,4 +15,5 @@ for item in code.co_consts:
 
 consts.sort()
 for string in consts:
-    print(string)
+    if __name__ == '__main__':
+        print(string)
