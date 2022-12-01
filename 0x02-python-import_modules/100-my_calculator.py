@@ -26,4 +26,6 @@ match operator:
         result = mul(a, b)
     case '/':
         result = div(a, b)
-print(f"{a} {operator} {b} = {result}")
+
+if __name__ == '__main__':
+    print(f"{a} {operator} {b} = {result}")
