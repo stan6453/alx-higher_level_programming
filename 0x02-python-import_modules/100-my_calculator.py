@@ -28,4 +28,4 @@ elif operator == '/':
     result = div(a, b)
 
 if __name__ == '__main__':
-    print(f"{} {} {} = {}".format(a, operator, b, result))
+    print("{} {} {} = {}".format(a, operator, b, result))
