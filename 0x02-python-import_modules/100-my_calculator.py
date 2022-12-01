@@ -11,21 +11,21 @@ if len(sys.argv) != 4:
 operator = sys.argv[2]
 
 if operator not in ('+', '-', '*', '/'):
-    print(f"Unknown operators. Available operators: +, -, * and /")
+    print(f"Unknown operator. Available operators: +, -, * and /")
     sys.exit(1)
 
 a = int(sys.argv[1])
 b = int(sys.argv[3])
 
-match operator:
-    case '+':
-        result = add(a, b)
-    case '-':
-        result = sub(a, b)
-    case '*':
-        result = mul(a, b)
-    case '/':
-        result = div(a, b)
+
+if operator == '+':
+    result = add(a, b)
+elif operator == '-':
+    result = sub(a, b)
+elif operator == '*':
+    result = mul(a, b)
+elif operator == '/':
+    result = div(a, b)
 
 if __name__ == '__main__':
     print(f"{a} {operator} {b} = {result}")
