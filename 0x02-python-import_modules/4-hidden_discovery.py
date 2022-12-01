@@ -14,6 +14,7 @@ for item in code.co_consts:
     if count % 2 == 0 and not_in:
         consts.append(item)
     count = count + 1
+
 consts.sort()
 for string in consts:
     if __name__ == '__main__':
