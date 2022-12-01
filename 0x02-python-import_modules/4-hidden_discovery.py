@@ -3,4 +3,4 @@
 import hidden_4.pyc
 import dis
 
-dis.dis(hidden_4.pyc)
+dir(hidden_4.pyc)
