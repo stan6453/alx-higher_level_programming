@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+if __name__ == '__main__':
+    import sys
+    sys.exit(1)
 from sys import argv
 
 # argument count minus the name of the script
