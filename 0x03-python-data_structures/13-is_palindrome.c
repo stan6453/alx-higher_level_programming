@@ -27,7 +27,13 @@ int is_palindrome(listint_t **head)
 	return (comparelists(*head, endpointer));
 }
 
-
+/**
+ * comparelists - compare two list to see if they are equal
+ * (use specifically for this palindrome question)
+ * @head: head of te first list
+ * @list2: head of the second list
+ * Return: 1 if equal, 0 otherwise
+ */
 int comparelists(listint_t *head, listint_t *list2)
 {
 	while (head && list2)
@@ -40,6 +46,14 @@ int comparelists(listint_t *head, listint_t *list2)
 	return (1);
 }
 
+
+/**
+ * divide_the_middle - reverse the second half of a linked list
+ * from the middle.
+ * @midpoint: the point where the second half of the list
+ * shuold be reversed from
+ * Return: head of the reversed linked list
+ */
 listint_t *divide_the_middle(listint_t *midpoint)
 {
 	listint_t *temp;
