@@ -1,6 +1,8 @@
 #include "lists.h"
 #include <stddef.h>
 
+listint_t *divide_the_middle(listint_t *midpoint);
+int comparelists(listint_t *head, listint_t *list2);
 
 /**
  * is_palindrome -  checks if a singly linked list is a palindrome
@@ -9,12 +11,8 @@
  */
 int is_palindrome(listint_t **head)
 {
-
-	listint_t *leftside = *head;
 	listint_t *endpointer = *head;
 	listint_t *midpointer = *head;
-	int jumppoint = 0;
-	int i = 0;
 
 	if (head == NULL || *head == NULL)
 		return (1);
@@ -23,25 +21,43 @@ int is_palindrome(listint_t **head)
 	{
 		midpointer = midpointer->next;
 		endpointer = endpointer->next->next;
-		jumppoint++;
 	}
 
-	if (endpointer->next != NULL && endpointer->next->next == NULL)
-		jumppoint++;
+	endpointer = divide_the_middle(midpointer);
+	return (comparelists(*head, endpointer));
+}
 
-	while (jumppoint != 0)
+
+int comparelists(listint_t *head, listint_t *list2)
+{
+	while (head && list2)
 	{
-		/*note: i used endpointer for the right hand side*/
-		endpointer = midpointer;
-		for (i = 0; i < jumppoint; i++)
-			endpointer = endpointer->next;
-
-		if (leftside->n != endpointer->n)
+		if (head->n != list2->n)
 			return (0);
-
-		leftside = leftside->next;
-		jumppoint--;
-
+		head = head->next;
+		list2 = list2->next;
 	}
 	return (1);
+}
+
+listint_t *divide_the_middle(listint_t *midpoint)
+{
+	listint_t *temp;
+	listint_t *temp2;
+
+	if (midpoint->next == NULL)
+		return (midpoint);
+
+	temp = midpoint->next;
+	temp2 = midpoint->next->next;
+	midpoint->next = NULL;
+	while (temp2 != NULL)
+	{
+		temp->next = midpoint;
+		midpoint = temp;
+		temp = temp2;
+		temp2 = temp2->next;
+	}
+	temp->next = midpoint;
+	return (temp);
 }
