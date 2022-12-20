@@ -72,6 +72,7 @@ class Square:
             print()
 
     def __str__(self):
+        """tuple: return the position of the square"""
         output = ""
 
         i = 0
