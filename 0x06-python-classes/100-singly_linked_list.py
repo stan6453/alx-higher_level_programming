@@ -21,6 +21,7 @@ class Node:
 
     @property
     def data(self):
+        """int: returns the value of the node"""
         return self.__data
 
     @data.setter
@@ -31,6 +32,7 @@ class Node:
 
     @property
     def next_node(self):
+        """Node: returns the next node"""
         return self.__next_node
 
     @next_node.setter
