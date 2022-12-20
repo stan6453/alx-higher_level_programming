@@ -5,7 +5,7 @@ Testing Python Docstrings
 
 
 class Square:
-     """
+    """
     class has a size private instance property
     """
 
