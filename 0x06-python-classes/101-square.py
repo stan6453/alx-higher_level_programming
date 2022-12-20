@@ -71,6 +71,28 @@ class Square:
                     print("#", end="")
             print()
 
+    def __str__(self):
+        output = ""
+
+        i = 0
+        if self.__size > 0:
+            while i < self.__position[1]:
+                output += "\n"
+                i += 1
+
+        if self.__size == 0:
+            return "\n"
+
+        for i in range(self.__size):
+            for j in range(self.__size + self.__position[0]):
+                if j < self.__position[0]:
+                    output += " "
+                else:
+                    output += "#"
+            output += "\n"
+        return output
+
+
 
 def wrong_pos_data(position):
     """
@@ -84,4 +106,3 @@ def wrong_pos_data(position):
         return True
     if position[0] < 0 or position[1] < 0:
         return True
-
