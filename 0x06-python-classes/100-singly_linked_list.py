@@ -89,4 +89,4 @@ class SinglyLinkedList:
             output += "\n"
             temp = temp.next_node
 
-        return output
+        return output[:-1]
