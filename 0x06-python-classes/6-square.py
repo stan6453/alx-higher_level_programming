@@ -77,7 +77,7 @@ def wrong_pos_data(position):
     """
     is_not_tuple = type(position) is not tuple
     len_not_two = len(position) != 2
-    not_int = type(position[0]) is not int or type(position[1]) is not int
+    not_int = type(position[0]) is not int or (position[1] and type(position[1]) is not int)
     conatin_negavive_value = position[0] < 0 or position[1] < 0
 
     return is_not_tuple or len_not_two or not_int or conatin_negavive_value
