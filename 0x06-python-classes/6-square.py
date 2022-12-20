@@ -37,7 +37,7 @@ class Square:
 
     @property
     def position(self):
-        """int: returns the size of the square"""
+        """tuple: return the position of the square"""
         return self.__position
 
     @position.setter
@@ -52,7 +52,7 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """int: returns the size of the square"""
+        """str: returns the size of the square"""
         i = 0
         while i < self.__position[1]:
             print()
