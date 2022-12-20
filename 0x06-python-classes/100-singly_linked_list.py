@@ -1,6 +1,16 @@
 #!/usr/bin/python3
+"""
+This python file implements a singly linked list
+"""
+
 
 class Node:
+    """
+    This class defines a node. it has the properties:
+    data: the value of the node
+    next_node: points to the next node in the linked list
+    """
+
     def __init__(self, data=0, next_node=None):
         if type(data) is not int:
             raise TypeError("data must be an integer")
@@ -31,6 +41,11 @@ class Node:
 
 
 class SinglyLinkedList:
+    """
+    This class defines a linked list.
+    it sets up the linked list and keeps track of it
+    """
+
     def __init__(self):
         self.__head = None
 
