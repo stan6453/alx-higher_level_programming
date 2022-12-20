@@ -75,12 +75,11 @@ def wrong_pos_data(position):
     """
     returns true if position data is the wrong format
     """
-    is_not_tuple = type(position) is not tuple
+    if type(position) is not tuple:
+        return True
     if len(position) != 2:
         return True
     if type(position[0]) is not int or type(position[1]) is not int:
         return True
-
-    contain_negative_value = position[0] < 0 or position[1] < 0
-
-    return is_not_tuple or contain_negative_value
+    if position[0] < 0 or position[1] < 0:
+        return True
