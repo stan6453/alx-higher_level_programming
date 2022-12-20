@@ -76,8 +76,9 @@ def wrong_pos_data(position):
     returns true if position data is the wrong format
     """
     is_not_tuple = type(position) is not tuple
-    len_not_two = len(position) != 2
+    if len(position) != 2:
+        return True
     not_int = type(position[0]) is not int or type(position[1]) is not int
     contain_negative_value = position[0] < 0 or position[1] < 0
 
-    return is_not_tuple or len_not_two or not_int or contain_negative_value
+    return is_not_tuple or not_int or contain_negative_value
