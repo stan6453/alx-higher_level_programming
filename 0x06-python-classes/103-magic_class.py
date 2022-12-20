@@ -6,6 +6,10 @@ import math
 
 
 class MagicClass:
+    """
+    class defines a circle where:
+    radius is the radius of the cirle
+    """
     def __init__(self, radius=0):
         if type(radius) is not int and type(radius) is not float:
             raise TypeError("radius must be a number")
