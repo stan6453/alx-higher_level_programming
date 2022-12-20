@@ -82,7 +82,7 @@ class Square:
                 i += 1
 
         if self.__size == 0:
-            return "\n"
+            return ""
 
         for i in range(self.__size):
             for j in range(self.__size + self.__position[0]):
