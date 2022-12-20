@@ -6,14 +6,14 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
 
-        is_not_tuple = type(psition) is not tuple
+        is_not_tuple = type(position) is not tuple
         len_not_two = len(position) != 2
         not_int = type(position[0]) is not int or type(position[1]) is not int
         conatin_negavive_value = position[0] < 0 or position[1] < 0
         if is_not_tuple or len_not_two or not_int or conatin_negavive_value:
             raise TypeError("position must be a tuple of 2 positive integers")
 
-        selft.__position = position
+        self.__position = position
         self.__size = size
 
     @property
@@ -47,10 +47,19 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
+        i = 0
+        while i < self.__position[1]:
+            print()
+            i += 1
+
         if self.__size == 0:
             print()
             return
+
         for i in range(self.__size):
-            for j in range(self.__size):
-                print("#", end="")
+            for j in range(self.__size + self.__position[0]):
+                if j < self.__position[0]:
+                    print(" ", end="")
+                else:
+                    print("#", end="")
             print()
