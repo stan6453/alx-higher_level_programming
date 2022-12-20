@@ -26,6 +26,7 @@ class Node:
 
     @data.setter
     def data(self, value):
+         """sets data attribute"""
         if type(value) is not int:
             raise TypeError("data must be an integer")
         self.__data = value
@@ -37,6 +38,7 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
+        """set value of next node"""
         if type(value) is not Node and value is not None:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
