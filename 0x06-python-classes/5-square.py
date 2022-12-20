@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 class Square:
-    def __init__(self, size = 0):
+    def __init__(self, size=0):
         if type(size) is not int:
             raise TypeError("size must be an integer")
         if size < 0:
@@ -22,11 +22,11 @@ class Square:
     def area(self):
         return self.__size ** 2
 
-    def my_print(self):#
+    def my_print(self):
         if self.__size == 0:
             print()
             return
         for i in range(self.__size):
             for j in range(self.__size):
-                print("#", end = "")
-            print()    
+                print("#", end="")
+            print()

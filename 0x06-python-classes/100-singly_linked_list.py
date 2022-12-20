@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 class Node:
-    def __init__(self, data = 0, next_node=None):
+    def __init__(self, data=0, next_node=None):
         if type(data) is not int:
             raise TypeError("data must be an integer")
         if type(next_node) is not Node and next_node is not None:
@@ -42,9 +42,10 @@ class SinglyLinkedList:
         else:
             temp = self.__head
 
-            while(temp.data < value and temp.next_node is not None and temp.next_node.data < value):
+            while temp.data < value and temp.next_node is not None\
+                    and temp.next_node.data < value:
                 temp = temp.next_node
-            
+
             if temp == self.__head and value < temp.data:
                 new_node.next_node = temp
                 self.__head = new_node
@@ -54,10 +55,10 @@ class SinglyLinkedList:
             temp.next_node = new_node
 
     def __str__(self):
-        output =""
+        output = ""
         temp = self.__head
 
-        while(temp is not None):
+        while temp is not None:
             output += str(temp.data)
             output += "\n"
             temp = temp.next_node
