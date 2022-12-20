@@ -52,7 +52,7 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """str: returns the size of the square"""
+        """print a visual representation of the square and its position"""
         i = 0
         while i < self.__position[1]:
             print()
