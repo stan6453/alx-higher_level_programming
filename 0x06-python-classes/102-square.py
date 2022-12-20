@@ -53,7 +53,7 @@ class Square:
         return False
 
     def __ge__(self, other):
-        if (self.size > other.size):
+        if (self.size >= other.size):
             return True
         return False
 
