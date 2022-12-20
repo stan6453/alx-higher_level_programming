@@ -3,4 +3,7 @@
 Testing Python Docstrings
 """
 class Square:
+    """
+    Empty class
+    """
     pass
