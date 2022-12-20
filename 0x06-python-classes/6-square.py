@@ -16,7 +16,6 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
 
-        
         if wrong_pos_data(position):
             raise TypeError("position must be a tuple of 2 positive integers")
 
@@ -70,7 +69,6 @@ class Square:
                 else:
                     print("#", end="")
             print()
-
 
 
 def wrong_pos_data(position):
