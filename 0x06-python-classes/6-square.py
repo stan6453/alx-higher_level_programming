@@ -16,11 +16,8 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
 
-        is_not_tuple = type(position) is not tuple
-        len_not_two = len(position) != 2
-        not_int = type(position[0]) is not int or type(position[1]) is not int
-        conatin_negavive_value = position[0] < 0 or position[1] < 0
-        if is_not_tuple or len_not_two or not_int or conatin_negavive_value:
+        
+        if wrong_pos_data(position):
             raise TypeError("position must be a tuple of 2 positive integers")
 
         self.__position = position
@@ -47,11 +44,7 @@ class Square:
     @position.setter
     def position(self, value):
 
-        is_not_tuple = type(value) is not tuple
-        len_not_two = len(value) != 2
-        not_int = type(value[0]) is not int or type(value[1]) is not int
-        conatin_negavive_value = value[0] < 0 or value[1] < 0
-        if is_not_tuple or len_not_two or not_int or conatin_negavive_value:
+        if wrong_pos_data(value):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = position
 
@@ -77,3 +70,16 @@ class Square:
                 else:
                     print("#", end="")
             print()
+
+
+
+def wrong_pos_data(position):
+    """
+    returns true if position data is the wrong format
+    """
+    is_not_tuple = type(position) is not tuple
+    len_not_two = len(position) != 2
+    not_int = type(position[0]) is not int or type(position[1]) is not int
+    conatin_negavive_value = position[0] < 0 or position[1] < 0
+
+    return is_not_tuple or len_not_two or not_int or conatin_negavive_value
