@@ -49,6 +49,7 @@ class SinglyLinkedList:
     """
 
     def __init__(self):
+        """initializes the node with instance variables"""
         self.__head = None
 
     def sorted_insert(self, value):
