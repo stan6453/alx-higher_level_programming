@@ -26,7 +26,7 @@ class Node:
 
     @data.setter
     def data(self, value):
-         """sets data attribute"""
+        """sets data attribute"""
         if type(value) is not int:
             raise TypeError("data must be an integer")
         self.__data = value
