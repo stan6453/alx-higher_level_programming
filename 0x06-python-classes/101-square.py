@@ -90,7 +90,7 @@ class Square:
                 else:
                     output += "#"
             output += "\n"
-        return output
+        return output[:-1]
 
 
 
