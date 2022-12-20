@@ -56,9 +56,11 @@ class Square:
         self.__position = position
 
     def area(self):
+        """int: returns the size of the square"""
         return self.__size ** 2
 
     def my_print(self):
+        """int: returns the size of the square"""
         i = 0
         while i < self.__position[1]:
             print()
