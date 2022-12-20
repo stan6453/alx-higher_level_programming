@@ -8,7 +8,6 @@ node1.data =999
 node1.next_node = node2
 
 sll = SinglyLinkedList()
-sll.__head = node1
 sll.sorted_insert(2)
 sll.sorted_insert(5)
 sll.sorted_insert(3)
