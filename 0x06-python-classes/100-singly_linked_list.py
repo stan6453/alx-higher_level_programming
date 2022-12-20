@@ -14,7 +14,7 @@ class Node:
     def __init__(self, data=0, next_node=None):
         if type(data) is not int:
             raise TypeError("data must be an integer")
-        if type(next_node) is not Node and next_node is not None:
+         if (value is not None and not isinstance(value, Node)):
             raise TypeError("next_node must be a Node object")
         self.__data = data
         self.__next_node = next_node
@@ -39,7 +39,7 @@ class Node:
     @next_node.setter
     def next_node(self, value):
         """set value of next node"""
-        if type(value) is not Node and value is not None:
+         if (value is not None and not isinstance(value, Node)):
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
