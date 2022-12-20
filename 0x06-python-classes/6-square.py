@@ -59,7 +59,7 @@ class Square:
             i += 1
 
         if self.__size == 0:
-            for i in range(self.__position[0]:
+            for i in range(self.__position[0]):
                     print(" ", end="")
             print()
             return
