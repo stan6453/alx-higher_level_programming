@@ -75,6 +75,9 @@ class SinglyLinkedList:
             temp.next_node = new_node
 
     def __str__(self):
+        """
+        testing to see if my headache goes away
+        """
         output = ""
         temp = self.__head
 
