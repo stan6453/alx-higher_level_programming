@@ -45,7 +45,7 @@ class Square:
 
         if wrong_pos_data(value):
             raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = position
+        self.__position = value
 
     def area(self):
         """int: returns the size of the square"""
