@@ -94,7 +94,6 @@ class Square:
         return output[:-1]
 
 
-
 def wrong_pos_data(position):
     """
     returns true if position data is the wrong format
