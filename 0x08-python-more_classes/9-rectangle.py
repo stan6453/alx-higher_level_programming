@@ -3,6 +3,7 @@
 
 
 class Rectangle:
+    """Rectangle class."""
 
     """Class/Static attributes"""
     number_of_instances = 0
