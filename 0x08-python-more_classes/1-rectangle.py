@@ -3,6 +3,7 @@
 
 
 class Rectangle:
+    """Rectangle class."""
     def __init__(self, width=0, height=0):
         Rectangle.validate_dimention(width, "width")
         Rectangle.validate_dimention(height, "height")
