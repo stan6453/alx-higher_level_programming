@@ -20,7 +20,7 @@ def text_indentation(text):
             print(character + "\n\n", end="")
             new_line = True
         else:
-            if new_line and character == " ":
+            if new_line and character in [" ", '\t']:
                 new_line = False
                 continue
             new_line = False
