@@ -30,13 +30,13 @@ def list_list_of_numbers(matrix, name):
         for number in row:
             if type(number) not in [int, float]:
                 raise TypeError("{} should contain only \
-                        integers or floats".format(name))
+integers or floats".format(name))
         if rowlength is None:
             rowlength = len(row)
         else:
             if rowlength != len(row):
                 raise TypeError("each row of {} must \
-                        be of the same size".format(name))
+be of the same size".format(name))
 
 
 def can_multiply(m_a, m_b):
