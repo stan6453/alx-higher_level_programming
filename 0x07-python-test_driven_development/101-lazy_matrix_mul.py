@@ -21,7 +21,7 @@ def list_list_of_numbers(matrix, name):
     if type(matrix) is not list:
         raise TypeError("{} must be a list".format(name))
 
-    if not matrix or (len(matrix) == 1 and not matrix[0]):
+    if not matrix or len(matrix) == 1 and not matrix[0]:
         raise ValueError("{} can't be empty".format(name))
 
     for row in matrix:
