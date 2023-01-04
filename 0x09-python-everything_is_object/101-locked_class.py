@@ -2,7 +2,6 @@
 class LockedClass:
     def __setattr__(self, name, value):
         if name != 'first_name':
-            raise AttributeError("You are not allowed to \
-                    set new instance attributes")
+            raise AttributeError("'LockedClass' object has no attribute '{}'".format(name))
         else:
             self.__dict__[name] = value
