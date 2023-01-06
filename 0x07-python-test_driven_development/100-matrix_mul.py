@@ -2,7 +2,7 @@
 """Matrix multiplication module."""
 
 
-def lazy_matrix_mul(m_a, m_b):
+def matrix_mul(m_a, m_b):
     """multiply two matrices"""
 
     """Tests"""
