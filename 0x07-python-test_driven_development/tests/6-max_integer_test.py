@@ -22,6 +22,7 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([-1, -5, -9]), -1)
         self.assertEqual(max_integer([9, -9]), 9)
         self.assertEqual(max_integer([6, 6]), 6)
+        self.assertEqual(max_integer([12, 45, 76 89]), 89)
 
     def test_throw_error(self):
         """Test for TypeError conditions."""
