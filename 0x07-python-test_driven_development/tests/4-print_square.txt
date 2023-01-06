@@ -23,7 +23,6 @@
 	TypeError: size must be an integer
 	
 	>>> print_square(0)
-	<BLANKLINE>
 	
 	>>> print_square(-1)
 	Traceback (most recent call last):

@@ -12,7 +12,6 @@ def print_square(size):
 
     """Business Logic"""
     if size == 0:
-        print()
         return
     for height in range(size):
         for width in range(size):
