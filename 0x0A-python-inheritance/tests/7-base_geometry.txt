@@ -1,0 +1,19 @@
+
+
+
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	
+	>>> new_class = BaseGeometry()
+	
+	>>> new_class.integer_validator("height", "value")
+	Traceback (most recent call last):
+	TypeError: height must be an integer
+	
+	>>> new_class.integer_validator("height", 0)
+	Traceback (most recent call last):
+	ValueError: height must be greater than 0
+	
+	>>> new_class.integer_validator("width", -30)
+	Traceback (most recent call last):
+	ValueError: width must be greater than 0
