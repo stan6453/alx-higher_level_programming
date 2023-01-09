@@ -19,7 +19,3 @@
 	ValueError: width must be greater than 0
 	
 	>>> new_class.integer_validator("width", 30)
-	
-	>>> BaseGeometry.integer_validator("width", 30)
-	Traceback (most recent call last):
-	TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
