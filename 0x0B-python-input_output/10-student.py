@@ -9,7 +9,7 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-    def to_json(self, attrs = None):
+    def to_json(self, attrs=None):
         if not attrs:
             return self.__dict__
         new_dict = {}
@@ -17,4 +17,3 @@ class Student:
             if key in self.__dict__:
                 new_dict[key] = self.__dict__[key]
         return new_dict
-
