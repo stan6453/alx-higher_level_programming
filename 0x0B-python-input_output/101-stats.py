@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Web Request Stats module"""
 
+
 while True:
     status_codes = {200: 0, 301: 0, 400: 0, 401: 0,
                     403: 0, 404: 0, 405: 0, 500: 0}
@@ -10,7 +11,8 @@ while True:
     while line:
         file_size = int(line[line.rfind(" ") + 1:])
         status_code = int(line[line.rfind(" ", 0,
-line.rfind(" ") - 1) + 1:line.rfind(" ")])
+                                          line.rfind(" ") - 1) +
+                               1:line.rfind(" ")])
         total_size += file_size
         status_codes[status_code] += 1
         line_count += 1
