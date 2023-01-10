@@ -11,8 +11,8 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-    """Return a dictionary representaion of the object based on the keys
-    contained in attrs"""
+    	"""Return a dictionary representaion of the object based on the keys
+    	contained in attrs"""
         if attrs is None:
             return self.__dict__
         new_dict = {}
@@ -22,5 +22,5 @@ class Student:
         return new_dict
 
     def reload_from_json(self, json):
-    	 """Replaces all attributes of the Student"""
+    	"""Replaces all attributes of the Student"""
         self.__dict__ = json
