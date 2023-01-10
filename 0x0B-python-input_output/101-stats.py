@@ -2,7 +2,6 @@
 """Web Request Stats module"""
 
 
-if __name__ == "__main__"
 iteration = 1
 while True:
     status_codes = {200: 0, 301: 0, 400: 0, 401: 0,
