@@ -124,3 +124,41 @@ class Base:
             return json.loads(json_string)
         return []
 
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """open a window and draws all the Rectangles and Squares"""
+        import turtle
+        
+        my_turtle = turtle.Turtle()
+        shape_list = list_rectangles + list_squares
+        gap = 70 # distance between shapes
+        my_turtle.penup()
+        my_turtle.setpos(-550, 150)
+        prev_obj_width = 0
+        for shape in shape_list:
+        	#make shapes "gap" distance away from each other 
+        	my_turtle.penup()
+        	my_turtle.setx(my_turtle.xcor() + gap + prev_obj_width)
+        	prev_obj_width = Base.draw_quadrilateral(my_turtle, shape, 2)
+
+        input("press enter to exit")
+
+    @staticmethod
+    def draw_quadrilateral(brush, quad, scale):
+        from random import choice
+
+        colors = ["red", "black", "pink", "purple", "green", "orange", "blue", "yellow"]
+        brush.pencolor(choice(colors))
+        brush.fillcolor(choice(colors))
+        brush.begin_fill()
+        brush.pendown()
+        brush.forward(quad.width * scale)
+        brush.right(90)
+        brush.forward(quad.height * scale)
+        brush.right(90)
+        brush.forward(quad.width * scale)
+        brush.right(90)
+        brush.forward(quad.height * scale)
+        brush.right(90)
+        brush.end_fill()
+        return quad.width * scale
