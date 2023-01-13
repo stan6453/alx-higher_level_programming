@@ -47,6 +47,28 @@ class Base:
         return list_objs
 
     @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """writes the CSV representation of list_objs to a file"""
+        square_attrs = ["id","size","x", "y"]
+        rect_attrs = ["id","width","height","x", "y"]
+        if cls.__name__ == "Rectangle":
+            cls.save_csv_to_disk(rect_attrs, list_objs)
+        elif cls.__name__ == "Square":
+            cls.save_csv_to_disk(square_attrs, list_objs)
+
+    @classmethod
+    def save_csv_to_disk(cls, attrs, list_objs):
+        """writes the CSV representation of list_objs to a file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", encoding="utf-8") as file:
+            for obj in list_objs:
+                for attr in attrs:
+                    file.write(str(getattr(obj, attr)))
+                    file.write(",")
+                file.write("\n")
+
+
+    @classmethod
     def create(cls, **dictionary):
         new_quadrilateral = cls(**dictionary)
         new_quadrilateral.update(**dictionary)
