@@ -61,12 +61,46 @@ class Base:
         """writes the CSV representation of list_objs to a file"""
         filename = cls.__name__ + ".csv"
         with open(filename, "w", encoding="utf-8") as file:
-            for obj in list_objs:
+            for index, obj in enumerate(list_objs):
                 for attr in attrs:
                     file.write(str(getattr(obj, attr)))
                     file.write(",")
-                file.write("\n")
+                #avoid printing a new line after the last object
+                if index != len(list_objs) - 1:
+                    file.write("\n")
 
+    @classmethod
+    def load_from_file_csv(cls):
+        """loads a csv representation of list_objs from a file"""
+        square_attrs = ["id","size","x", "y"]
+        rect_attrs = ["id","width","height","x", "y"]
+        if cls.__name__ == "Rectangle":
+            return cls.load_csv_from_disk(rect_attrs)
+        elif cls.__name__ == "Square":
+            return cls.load_csv_from_disk(square_attrs)
+
+    @classmethod
+    def load_csv_from_disk(cls, attrs):
+        import csv
+        filename = cls.__name__ + ".csv"
+        list_objs = []
+        rows = []
+        #my goal is to recreate a dictionary representaion of the object
+        #and then use the create (a class method) to create the new object
+        #from this dictionary
+        with open(filename, encoding="utf-8") as file:
+            #csv.reader() returns a list containing a list representing the
+            #rows of the csv file (list of list of rows)
+            rows = csv.reader(file)
+            rows = list(rows)
+        for row in rows:
+            new_dict = {}
+            for attr, value in zip(attrs, row):
+                #csv.reader() returns row values as strings. since all our
+                #attributes are ints, we need to convert all value to int
+                new_dict[attr] = int(value)
+            list_objs.append(cls.create(**new_dict))
+        return list_objs
 
     @classmethod
     def create(cls, **dictionary):
