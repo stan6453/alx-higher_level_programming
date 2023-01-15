@@ -1,11 +1,20 @@
 #!/usr/bin/python3
 """Test for Rectangle class"""
 import unittest
+from unittest.mock import patch #testing calls to print
+from io import StringIO
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class TestRectangle(unittest.TestCase):
     """Test for Rectangle Class"""
+
+    def test_instance(self):
+        """Test if rectangle is an instance of Base class"""#
+        self.assertIsInstance(Rectangle(7, 4), Base)
+        self.assertTrue(issubclass(Rectangle, Base))
+
     def test_parameters(self):
         """Test Triangle class' properties and contructor parameters"""
         """test width and height"""
@@ -72,10 +81,77 @@ class TestRectangle(unittest.TestCase):
         rect1 = Rectangle(7, 5, 4, 9, 0)
         self.assertEqual(rect1.area(), 35)
 
-        rect1 = Rectangle(5, 3, 9, 5)
-        string = """#####
-        #####
-        #####"""
-        self.assertEqual(rect1.display(), string)
+        """Test display() method"""
+        rect1 = Rectangle(5, 3)
+        string = """#####\n#####\n#####\n"""
+        with patch('sys.stdout', new=StringIO()) as mock_stdout:
+            rect1.display()
+            self.assertEqual(mock_stdout.getvalue(), string)
+
+        rect1 = Rectangle(4, 3, 3, 4)
+        string = """\n\n\n\n   ####\n   ####\n   ####\n"""
+        with patch('sys.stdout', new=StringIO()) as mock_stdout:
+            rect1.display()
+            self.assertEqual(mock_stdout.getvalue(), string)
+
+        rect1 = Rectangle(1, 1, 3, 0)
+        string = """   #\n"""
+        with patch('sys.stdout', new=StringIO()) as mock_stdout:
+            rect1.display()
+            self.assertEqual(mock_stdout.getvalue(), string)
 
 
+        rect1 = Rectangle(2, 2, 0, 3)
+        string = """\n\n\n##\n##\n"""
+        with patch('sys.stdout', new=StringIO()) as mock_stdout:
+            rect1.display()
+            self.assertEqual(mock_stdout.getvalue(), string)
+
+        """Test __str__ magic method"""
+        rect1 = Rectangle(2, 2, 0, 3, 9)
+        self.assertEqual(str(rect1), "[Rectangle] (9) 0/3 - 2/2")
+
+        rect2 = Rectangle(1, 1, 0, 0, 8)
+        self.assertEqual(str(rect2), "[Rectangle] (8) 0/0 - 1/1")
+
+        """Test update function"""
+        rect1 = Rectangle(2, 2, 0, 3)
+        """Test *args"""
+        self.assertRaises(ValueError, rect1.update, 1,2,3,-1,0)
+        self.assertRaises(ValueError, rect1.update, 1,0,3,1,0)
+        self.assertRaises(ValueError, rect1.update, 1,2,0,1,0)
+        self.assertRaises(ValueError, rect1.update, 1,2,3,1,-2)
+        self.assertRaises(TypeError, rect1.update, 1,"2",3,1,2)
+        self.assertRaises(TypeError, rect1.update, 1,2,"3",1,2)
+        self.assertRaises(TypeError, rect1.update, 1,2,3,"1",2)
+        self.assertRaises(TypeError, rect1.update, 1,2,3,1,"2")
+
+        rect1.update(90, 23, 45, 12, 14)
+        self.assertEqual(rect1.id, 90)
+        self.assertEqual(rect1.width, 23)
+        self.assertEqual(rect1.height, 45)
+        self.assertEqual(rect1.x, 12)
+        self.assertEqual(rect1.y, 14)
+
+        """Test **kwargs"""
+        rect1.update(width=90, height=23, y=45, id=12, x=14)
+        self.assertEqual(rect1.id, 12)
+        self.assertEqual(rect1.width, 90)
+        self.assertEqual(rect1.height, 23)
+        self.assertEqual(rect1.x, 14)
+        self.assertEqual(rect1.y, 45)
+
+        self.assertRaises(ValueError, rect1.update, width=1,height=2,y=3,x=-1,id=0)
+        self.assertRaises(ValueError, rect1.update, y=1,width=0,x=3,height=1,id=0)
+        self.assertRaises(ValueError, rect1.update, x=1,width=2,height=0,y=1,id=0)
+        self.assertRaises(ValueError, rect1.update, id=1,height=2,width=3,x=1,y=-2)
+        self.assertRaises(TypeError, rect1.update, height=1,width="2",x=3,y=1,id=2)
+        self.assertRaises(TypeError, rect1.update, y=1,x=2,height="3",width=1,id=2)
+        self.assertRaises(TypeError, rect1.update, width=1,height=2,y=3,x="1",id=2)
+        self.assertRaises(TypeError, rect1.update, id=1,hight=2,width=3,x=1,y="2")
+
+        rect1 = Rectangle(7, 3, 0, 3)
+        rect1.update(5, 75, id=78, width=8, height=89)  
+        self.assertEqual(rect1.id, 5)
+        self.assertEqual(rect1.width, 75)
+        self.assertEqual(rect1.height, 3)
