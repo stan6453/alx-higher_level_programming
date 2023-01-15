@@ -131,9 +131,9 @@ class Base:
         
         my_turtle = turtle.Turtle()
         shape_list = list_rectangles + list_squares
-        gap = 100 # distance between shapes
+        gap = 70 # distance between shapes
         my_turtle.penup()
-        my_turtle.setpos(-900, 400)
+        my_turtle.setpos(-550, 150)
         prev_obj_width = 0
         for shape in shape_list:
         	#make shapes "gap" distance away from each other 
@@ -147,7 +147,7 @@ class Base:
     def draw_quadrilateral(brush, quad, scale):
         from random import choice
 
-        colors = ["red", "black", "pink", "purple", "green", "orange", "blue", "yellow"]
+        colors = ["magenta", "gold","red", "black", "pink", "purple", "green", "orange", "blue"]
         brush.pencolor(choice(colors))
         brush.fillcolor(choice(colors))
         brush.begin_fill()
@@ -161,4 +161,5 @@ class Base:
         brush.forward(quad.height * scale)
         brush.right(90)
         brush.end_fill()
+        brush.write(quad.__class__.__name__, font=("Arial", 6 * scale, "bold"))
         return quad.width * scale
