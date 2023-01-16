@@ -37,13 +37,14 @@ class Base:
         """loads the JSON string representation of list_objs from a file"""
         filename = cls.__name__ + ".json"
         list_objs = []
-        with open(filename, encoding="utf-8") as file:
-            # return a list of dicts that represent the objs we want to
-            # create
-            list_dict = cls.from_json_string(file.read())
-            for a_dict in list_dict:
-                # use these dictionaries to create a list of new objects
-                list_objs.append(cls.create(**a_dict))
+        if os.path.exists(filename):
+            with open(filename, encoding="utf-8") as file:
+                # return a list of dicts that represent the objs we want to
+                # create
+                list_dict = cls.from_json_string(file.read())
+                for a_dict in list_dict:
+                    # use these dictionaries to create a list of new objects
+                    list_objs.append(cls.create(**a_dict))
         return list_objs
 
     @classmethod
