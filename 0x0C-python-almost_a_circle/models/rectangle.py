@@ -18,40 +18,48 @@ class Rectangle(Base):
     """Setters and Getters"""
     @property
     def width(self):
+        """Gets the value for width"""
         return self.__width
 
     @width.setter
     def width(self, value):
+        """Sets the value for width"""
         validate_int("width", value)
         validate_dimension("width", value)
         self.__width = value
 
     @property
     def height(self):
+        """Gets the value for height"""
         return self.__height
 
     @height.setter
     def height(self, value):
+        """Sets the value for height"""
         validate_int("height", value)
         validate_dimension("height", value)
         self.__height = value
 
     @property
     def x(self):
+        """Gets the value for x"""
         return self.__x
 
     @x.setter
     def x(self, value):
+        """Sets the value for x"""
         validate_int("x", value)
         validate_position("x", value)
         self.__x = value
 
     @property
     def y(self):
+        """Gets the value for y"""
         return self.__y
 
     @y.setter
     def y(self, value):
+        """Sets the value for y"""
         validate_int("y", value)
         validate_position("y", value)
         self.__y = value
