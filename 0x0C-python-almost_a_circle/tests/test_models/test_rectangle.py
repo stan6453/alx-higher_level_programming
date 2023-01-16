@@ -28,7 +28,7 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(TypeError, Rectangle, 4, 5, "2")
         self.assertRaises(TypeError, Rectangle, 4, 5, 2, "5")
         self.assertRaises(ValueError, Rectangle, 4, 5, -1)
-        self.assertRaises(ValueError, Rectangle, 4, 5, -1)
+        self.assertRaises(ValueError, Rectangle, 4, 5, 8, -1)
 
         """test id"""
         #I didnt supply id when calling Rectangle()
@@ -77,7 +77,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect10.y, 9)
 
     def test_instance_methods(self):
-        """Test Tringle Class instance methods"""
+        """Test Rectangle Class instance methods"""
         rect1 = Rectangle(7, 5, 4, 9, 0)
         self.assertEqual(rect1.area(), 35)
 
@@ -155,3 +155,8 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect1.id, 5)
         self.assertEqual(rect1.width, 75)
         self.assertEqual(rect1.height, 3)
+
+    def test_to_dictionary(self):
+        """Test the to_dictioanry() method"""
+        rect1 = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(rect1.to_dictionary(), {"id": 5, "width": 1, "height": 2, "x": 3, "y": 4})
