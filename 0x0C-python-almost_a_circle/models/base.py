@@ -94,14 +94,13 @@ class Base:
             # rows of the csv file (list of list of rows)
             rows = csv.reader(file)
             rows = list(rows)
-        if rows:
-            for row in rows:
-                new_dict = {}
-                for attr, value in zip(attrs, row):
-                    # csv.reader() returns row values as strings. since all our
-                    # attributes are ints, we need to convert all value to int
-                    new_dict[attr] = int(value)
-                list_objs.append(cls.create(**new_dict))
+        for row in rows:
+            new_dict = {}
+            for attr, value in zip(attrs, row):
+                # csv.reader() returns row values as strings. since all our
+                # attributes are ints, we need to convert all value to int
+                new_dict[attr] = int(value)
+            list_objs.append(cls.create(**new_dict))
         return list_objs
 
     @classmethod
