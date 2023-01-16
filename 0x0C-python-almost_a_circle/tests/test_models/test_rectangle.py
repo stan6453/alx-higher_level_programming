@@ -17,12 +17,12 @@ class TestRectangle(unittest.TestCase):
 
     def test_parameters(self):
         """Test Triangle class' properties and contructor parameters"""
-        
+
         """test rectangle id"""
         rect1 = Rectangle(7, 9)
         self.assertEqual(rect1.id, 1)
         self.assertEqual(Rectangle(1, 2).id, 2)
-        
+
         """test width and height"""
         self.assertRaises(TypeError, Rectangle)
         self.assertRaises(TypeError, Rectangle, "4", 5)
