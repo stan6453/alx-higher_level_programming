@@ -39,6 +39,8 @@ class Base:
         with open(filename, encoding="utf-8") as file:
             # return a list of dicts that represent the objs we want to create
             list_dict = cls.from_json_string(file.read())
+            if type(list_dict) is not list:
+                return []
             for a_dict in list_dict:
                 # use these dictionaries to create a list of new objects
                 list_objs.append(cls.create(**a_dict))
