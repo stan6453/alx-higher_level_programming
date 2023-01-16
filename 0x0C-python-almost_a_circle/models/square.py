@@ -10,7 +10,7 @@ class Square(Rectangle):
         """Initialize the square class."""
         """Rectangle class will assign Square class
         an id, width, height, x, and y attributes"""
-        Rectangle.__init__(self, size, size, x, y, id)
+        super().__init__(size, size, x, y, id)
         self.size = size
 
     """Getters and Setters"""
