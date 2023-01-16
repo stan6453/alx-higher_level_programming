@@ -16,10 +16,12 @@ class Square(Rectangle):
     """Getters and Setters"""
     @property
     def size(self):
+        """Gets the value of size"""
         return self.__size
 
     @size.setter
     def size(self, value):
+        """Sets the value for size"""
         validate_int("width", value)
         validate_dimension("width", value)
         self.width = value
@@ -29,6 +31,7 @@ class Square(Rectangle):
     """Instance methids"""
 
     def update(self, *args, **kwargs):
+        """Updates attributes of an instance"""
         if args:
             attributes = ["id", "size", "x", "y"]
             for attr, value in zip(attributes, args):
@@ -38,10 +41,12 @@ class Square(Rectangle):
                 setattr(self, key, value)
 
     def to_dictionary(self):
+        """Returns the dictionary representation of a Square"""
         return {"id": self.id, "size": self.size, "x": self.x, "y": self.y}
 
     """Special methods"""
 
     def __str__(self):
+        """Defines a format for the string representation of the class"""
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
                                                  self.y, self.width)
