@@ -102,7 +102,7 @@ class Base:
                     # attributes are ints, we need to convert all value to int
                     new_dict[attr] = int(value)
                 list_objs.append(cls.create(**new_dict))
-            return list_objs
+        return list_objs
 
     @classmethod
     def create(cls, **dictionary):
