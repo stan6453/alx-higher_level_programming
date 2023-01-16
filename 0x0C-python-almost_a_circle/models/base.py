@@ -14,7 +14,7 @@ class Base:
         """Base class constructor"""
         if id is not None and type(id) is int:
             self.id = id
-            Base.__nb_objects += 1
+            # Base.__nb_objects += 1
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
