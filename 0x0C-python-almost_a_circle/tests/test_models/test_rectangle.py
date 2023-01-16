@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Test for Rectangle class"""
 import unittest
-from unittest.mock import patch #testing calls to print
+from unittest.mock import patch  # testing calls to print
 from io import StringIO
 from models.rectangle import Rectangle
 from models.base import Base
@@ -11,7 +11,7 @@ class TestRectangle(unittest.TestCase):
     """Test for Rectangle Class"""
 
     def test_instance(self):
-        """Test if rectangle is an instance of Base class"""#
+        """Test if rectangle is an instance of Base class"""
         self.assertIsInstance(Rectangle(7, 4), Base)
         self.assertTrue(issubclass(Rectangle, Base))
 
@@ -31,9 +31,9 @@ class TestRectangle(unittest.TestCase):
         self.assertRaises(ValueError, Rectangle, 4, 5, 8, -1)
 
         """test id"""
-        #I didnt supply id when calling Rectangle()
-        #rect4 = Rectangle(4, 5, 2, 1)
-        #self.assertEqual(rect4.id, 1)
+        # I didnt supply id when calling Rectangle()
+        # rect4 = Rectangle(4, 5, 2, 1)
+        # self.assertEqual(rect4.id, 1)
 
         """test rectangle object's state"""
         rect3 = Rectangle(4, 5, 2, 1, 7)
@@ -100,7 +100,6 @@ class TestRectangle(unittest.TestCase):
             rect1.display()
             self.assertEqual(mock_stdout.getvalue(), string)
 
-
         rect1 = Rectangle(2, 2, 0, 3)
         string = """\n\n\n##\n##\n"""
         with patch('sys.stdout', new=StringIO()) as mock_stdout:
@@ -117,14 +116,14 @@ class TestRectangle(unittest.TestCase):
         """Test update function"""
         rect1 = Rectangle(2, 2, 0, 3)
         """Test *args"""
-        self.assertRaises(ValueError, rect1.update, 1,2,3,-1,0)
-        self.assertRaises(ValueError, rect1.update, 1,0,3,1,0)
-        self.assertRaises(ValueError, rect1.update, 1,2,0,1,0)
-        self.assertRaises(ValueError, rect1.update, 1,2,3,1,-2)
-        self.assertRaises(TypeError, rect1.update, 1,"2",3,1,2)
-        self.assertRaises(TypeError, rect1.update, 1,2,"3",1,2)
-        self.assertRaises(TypeError, rect1.update, 1,2,3,"1",2)
-        self.assertRaises(TypeError, rect1.update, 1,2,3,1,"2")
+        self.assertRaises(ValueError, rect1.update, 1, 2, 3, -1, 0)
+        self.assertRaises(ValueError, rect1.update, 1, 0, 3, 1, 0)
+        self.assertRaises(ValueError, rect1.update, 1, 2, 0, 1, 0)
+        self.assertRaises(ValueError, rect1.update, 1, 2, 3, 1, -2)
+        self.assertRaises(TypeError, rect1.update, 1, "2", 3, 1, 2)
+        self.assertRaises(TypeError, rect1.update, 1, 2, "3", 1, 2)
+        self.assertRaises(TypeError, rect1.update, 1, 2, 3, "1", 2)
+        self.assertRaises(TypeError, rect1.update, 1, 2, 3, 1, "2")
 
         rect1.update(90, 23, 45, 12, 14)
         self.assertEqual(rect1.id, 90)
@@ -141,17 +140,25 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect1.x, 14)
         self.assertEqual(rect1.y, 45)
 
-        self.assertRaises(ValueError, rect1.update, width=1,height=2,y=3,x=-1,id=0)
-        self.assertRaises(ValueError, rect1.update, y=1,width=0,x=3,height=1,id=0)
-        self.assertRaises(ValueError, rect1.update, x=1,width=2,height=0,y=1,id=0)
-        self.assertRaises(ValueError, rect1.update, id=1,height=2,width=3,x=1,y=-2)
-        self.assertRaises(TypeError, rect1.update, height=1,width="2",x=3,y=1,id=2)
-        self.assertRaises(TypeError, rect1.update, y=1,x=2,height="3",width=1,id=2)
-        self.assertRaises(TypeError, rect1.update, width=1,height=2,y=3,x="1",id=2)
-        self.assertRaises(TypeError, rect1.update, id=1,hight=2,width=3,x=1,y="2")
+        self.assertRaises(ValueError, rect1.update, width=1,
+                          height=2, y=3, x=-1, id=0)
+        self.assertRaises(ValueError, rect1.update, y=1,
+                          width=0, x=3, height=1, id=0)
+        self.assertRaises(ValueError, rect1.update, x=1,
+                          width=2, height=0, y=1, id=0)
+        self.assertRaises(ValueError, rect1.update, id=1,
+                          height=2, width=3, x=1, y=-2)
+        self.assertRaises(TypeError, rect1.update, height=1,
+                          width="2", x=3, y=1, id=2)
+        self.assertRaises(TypeError, rect1.update, y=1,
+                          x=2, height="3", width=1, id=2)
+        self.assertRaises(TypeError, rect1.update, width=1,
+                          height=2, y=3, x="1", id=2)
+        self.assertRaises(TypeError, rect1.update, id=1,
+                          hight=2, width=3, x=1, y="2")
 
         rect1 = Rectangle(7, 3, 0, 3)
-        rect1.update(5, 75, id=78, width=8, height=89)  
+        rect1.update(5, 75, id=78, width=8, height=89)
         self.assertEqual(rect1.id, 5)
         self.assertEqual(rect1.width, 75)
         self.assertEqual(rect1.height, 3)
@@ -159,7 +166,8 @@ class TestRectangle(unittest.TestCase):
     def test_to_dictionary(self):
         """Test the to_dictioanry() method"""
         rect1 = Rectangle(1, 2, 3, 4, 5)
-        self.assertEqual(rect1.to_dictionary(), {"id": 5, "width": 1, "height": 2, "x": 3, "y": 4})
+        self.assertEqual(rect1.to_dictionary(), {
+                         "id": 5, "width": 1, "height": 2, "x": 3, "y": 4})
 
     def tearDown(self):
         """Tear down test method to reset class attribute

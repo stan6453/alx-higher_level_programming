@@ -24,12 +24,12 @@ class Base:
     def save_to_file(cls, list_objs):
         """writes the JSON string representation of list_objs to a file"""
         filename = cls.__name__+".json"
-        list_dict=[]
+        list_dict = []
         if list_objs is not None:
             for obj in list_objs:
                 list_dict.append(obj.to_dictionary())
         with open(filename, "w", encoding="utf-8") as file:
-                file.write(cls.to_json_string(list_dict))
+            file.write(cls.to_json_string(list_dict))
 
     @classmethod
     def load_from_file(cls):
@@ -37,18 +37,18 @@ class Base:
         filename = cls.__name__ + ".json"
         list_objs = []
         with open(filename, encoding="utf-8") as file:
-            #return a list of dicts that represent the objs we want to create
+            # return a list of dicts that represent the objs we want to create
             list_dict = cls.from_json_string(file.read())
             for a_dict in list_dict:
-                #use these dictionaries to create a list of new objects
+                # use these dictionaries to create a list of new objects
                 list_objs.append(cls.create(**a_dict))
         return list_objs
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """writes the CSV representation of list_objs to a file"""
-        square_attrs = ["id","size","x", "y"]
-        rect_attrs = ["id","width","height","x", "y"]
+        square_attrs = ["id", "size", "x", "y"]
+        rect_attrs = ["id", "width", "height", "x", "y"]
         if cls.__name__ == "Rectangle":
             cls.save_csv_to_disk(rect_attrs, list_objs)
         elif cls.__name__ == "Square":
@@ -58,22 +58,22 @@ class Base:
     def save_csv_to_disk(cls, attrs, list_objs):
         """writes the CSV representation of list_objs to a file"""
         filename = cls.__name__ + ".csv"
-        #set lkist object to an empty list of its value is falsy
+        # set lkist object to an empty list of its value is falsy
         list_objs = list_objs or []
         with open(filename, "w", encoding="utf-8") as file:
             for index, obj in enumerate(list_objs):
                 for attr in attrs:
                     file.write(str(getattr(obj, attr)))
                     file.write(",")
-                #avoid printing a new line after the last object
+                # avoid printing a new line after the last object
                 if index != len(list_objs) - 1:
                     file.write("\n")
 
     @classmethod
     def load_from_file_csv(cls):
         """loads a csv representation of list_objs from a file"""
-        square_attrs = ["id","size","x", "y"]
-        rect_attrs = ["id","width","height","x", "y"]
+        square_attrs = ["id", "size", "x", "y"]
+        rect_attrs = ["id", "width", "height", "x", "y"]
         if cls.__name__ == "Rectangle":
             return cls.load_csv_from_disk(rect_attrs)
         elif cls.__name__ == "Square":
@@ -89,15 +89,15 @@ class Base:
         # and then use the create (a class method) to create the new object
         # from this dictionary
         with open(filename, encoding="utf-8") as file:
-            #csv.reader() returns a list containing a list representing the
-            #rows of the csv file (list of list of rows)
+            # csv.reader() returns a list containing a list representing the
+            # rows of the csv file (list of list of rows)
             rows = csv.reader(file)
             rows = list(rows)
         for row in rows:
             new_dict = {}
             for attr, value in zip(attrs, row):
-                #csv.reader() returns row values as strings. since all our
-                #attributes are ints, we need to convert all value to int
+                # csv.reader() returns row values as strings. since all our
+                # attributes are ints, we need to convert all value to int
                 new_dict[attr] = int(value)
             list_objs.append(cls.create(**new_dict))
         return list_objs
@@ -128,18 +128,18 @@ class Base:
     def draw(list_rectangles, list_squares):
         """open a window and draws all the Rectangles and Squares"""
         import turtle
-        
+
         my_turtle = turtle.Turtle()
         shape_list = list_rectangles + list_squares
-        gap = 70 # distance between shapes
+        gap = 70  # distance between shapes
         my_turtle.penup()
         my_turtle.setpos(-550, 150)
         prev_obj_width = 0
         for shape in shape_list:
-        	#make shapes "gap" distance away from each other 
-        	my_turtle.penup()
-        	my_turtle.setx(my_turtle.xcor() + gap + prev_obj_width)
-        	prev_obj_width = Base.draw_quadrilateral(my_turtle, shape, 2)
+            # make shapes "gap" distance away from each other
+            my_turtle.penup()
+            my_turtle.setx(my_turtle.xcor() + gap + prev_obj_width)
+            prev_obj_width = Base.draw_quadrilateral(my_turtle, shape, 2)
 
         input("press enter to exit")
 
@@ -147,7 +147,8 @@ class Base:
     def draw_quadrilateral(brush, quad, scale):
         from random import choice
 
-        colors = ["magenta", "gold","red", "black", "pink", "purple", "green", "orange", "blue"]
+        colors = ["magenta", "gold", "red", "black",
+                  "pink", "purple", "green", "orange", "blue"]
         brush.pencolor(choice(colors))
         brush.fillcolor(choice(colors))
         brush.begin_fill()

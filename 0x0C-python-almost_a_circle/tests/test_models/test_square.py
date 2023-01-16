@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 """Test for Square class"""
 import unittest
-from unittest.mock import patch #testing calls to print
+from unittest.mock import patch  # testing calls to print
 from io import StringIO
 from models.rectangle import Rectangle
 from models.base import Base
 from models.square import Square
-
 
 
 class TestSquare(unittest.TestCase):
@@ -33,9 +32,9 @@ class TestSquare(unittest.TestCase):
         self.assertRaises(ValueError, Square, 4, 5, -1)
 
         """test id"""
-        #I didnt supply id when calling Square()
-        #square4 = Square( 5, 2, 1)
-        #self.assertEqual(square4.id, 1)
+        # I didnt supply id when calling Square()
+        # square4 = Square( 5, 2, 1)
+        # self.assertEqual(square4.id, 1)
 
         """test Square object's state"""
         sq3 = Square(5, 2, 1, 7)
@@ -97,7 +96,6 @@ class TestSquare(unittest.TestCase):
             sq1.display()
             self.assertEqual(mock_stdout.getvalue(), string)
 
-
         sq1 = Square(2, 0, 3)
         string = """\n\n\n##\n##\n"""
         with patch('sys.stdout', new=StringIO()) as mock_stdout:
@@ -114,12 +112,12 @@ class TestSquare(unittest.TestCase):
         """Test update function"""
         sq1 = Square(2, 0, 3)
         """Test *args"""
-        self.assertRaises(ValueError, sq1.update, 1,2,-1,0)
-        self.assertRaises(ValueError, sq1.update, 1,0,1,0)
-        self.assertRaises(ValueError, sq1.update, 1,2,1,-2)
-        self.assertRaises(TypeError, sq1.update, 1,"2",1,2)
-        self.assertRaises(TypeError, sq1.update, 1,2,"1",2)
-        self.assertRaises(TypeError, sq1.update, 1,3,1,"2")
+        self.assertRaises(ValueError, sq1.update, 1, 2, -1, 0)
+        self.assertRaises(ValueError, sq1.update, 1, 0, 1, 0)
+        self.assertRaises(ValueError, sq1.update, 1, 2, 1, -2)
+        self.assertRaises(TypeError, sq1.update, 1, "2", 1, 2)
+        self.assertRaises(TypeError, sq1.update, 1, 2, "1", 2)
+        self.assertRaises(TypeError, sq1.update, 1, 3, 1, "2")
 
         sq1.update(90, 45, 12, 14)
         self.assertEqual(sq1.id, 90)
@@ -138,12 +136,12 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(sq1.x, 14)
         self.assertEqual(sq1.y, 45)
 
-        self.assertRaises(ValueError, sq1.update, size=1,y=3,x=-1,id=0)
-        self.assertRaises(ValueError, sq1.update, y=1,size=0,x=3,id=0)
-        self.assertRaises(ValueError, sq1.update, id=1,x=1,y=-2)
-        self.assertRaises(TypeError, sq1.update, size="2",x=3,y=1,id=2)
-        self.assertRaises(TypeError, sq1.update, size=1,y=3,x="1",id=2)
-        self.assertRaises(TypeError, sq1.update, id=1,size=2,x=1,y="2")
+        self.assertRaises(ValueError, sq1.update, size=1, y=3, x=-1, id=0)
+        self.assertRaises(ValueError, sq1.update, y=1, size=0, x=3, id=0)
+        self.assertRaises(ValueError, sq1.update, id=1, x=1, y=-2)
+        self.assertRaises(TypeError, sq1.update, size="2", x=3, y=1, id=2)
+        self.assertRaises(TypeError, sq1.update, size=1, y=3, x="1", id=2)
+        self.assertRaises(TypeError, sq1.update, id=1, size=2, x=1, y="2")
 
         sq1 = Square(7, 3, 0, 3)
         sq1.update(5, 75, id=78, width=8, height=89)
@@ -155,7 +153,8 @@ class TestSquare(unittest.TestCase):
     def test_to_dictionary(self):
         """Test the to_dictioanry() method"""
         sq1 = Square(1, 3, 4, 5)
-        self.assertEqual(sq1.to_dictionary(), {"id": 5, "size": 1, "x": 3, "y": 4})
+        self.assertEqual(sq1.to_dictionary(), {
+                         "id": 5, "size": 1, "x": 3, "y": 4})
 
     def tearDown(self):
         """Tear down test method to reset class attribute

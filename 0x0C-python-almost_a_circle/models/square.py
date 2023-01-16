@@ -5,6 +5,7 @@ from models.rectangle import Rectangle, validate_int, validate_dimension
 
 class Square(Rectangle):
     """Blueprint for square objects"""
+
     def __init__(self, size, x=0, y=0, id=None):
         """Initialize the square class."""
         """Rectangle class will assign Square class
@@ -26,9 +27,10 @@ class Square(Rectangle):
         self.__size = value
 
     """Instance methids"""
+
     def update(self, *args, **kwargs):
         if args:
-            attributes = ["id","size","x", "y"]
+            attributes = ["id", "size", "x", "y"]
             for attr, value in zip(attributes, args):
                 setattr(self, attr, value)
         else:
@@ -39,5 +41,7 @@ class Square(Rectangle):
         return {"id": self.id, "size": self.size, "x": self.x, "y": self.y}
 
     """Special methods"""
+
     def __str__(self):
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
+                                                 self.y, self.width)

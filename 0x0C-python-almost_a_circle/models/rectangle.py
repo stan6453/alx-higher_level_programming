@@ -57,6 +57,7 @@ class Rectangle(Base):
         self.__y = value
 
     """instance methods"""
+
     def area(self):
         return self.width * self.height
 
@@ -72,7 +73,7 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         if args:
-            attributes = ["id","width","height","x", "y"]
+            attributes = ["id", "width", "height", "x", "y"]
             for attr, value in zip(attributes, args):
                 setattr(self, attr, value)
         else:
@@ -80,14 +81,19 @@ class Rectangle(Base):
                 setattr(self, key, value)
 
     def to_dictionary(self):
-        return {"id": self.id, "width": self.width, "height": self.height, "x": self.x, "y": self.y}
+        return {"id": self.id, "width": self.width, "height": self.height, "x":
+                self.x, "y": self.y}
 
     """Special methods"""
+
     def __str__(self):
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
+                                                       self.width, self.height)
 
 
 """validation functions"""
+
+
 def validate_int(name, value):
     if value.__class__ is not int:
         raise TypeError("{} must be an integer".format(name))
