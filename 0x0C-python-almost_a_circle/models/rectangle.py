@@ -67,9 +67,11 @@ class Rectangle(Base):
     """instance methods"""
 
     def area(self):
+        """ returns the area of the rectangle object """
         return self.width * self.height
 
     def display(self):
+        """ displays a rectangle """
         for unit in range(self.y):
             print()
         for length in range(self.height):
@@ -80,6 +82,7 @@ class Rectangle(Base):
             print("")
 
     def update(self, *args, **kwargs):
+        """ update method """
         if args:
             attributes = ["id", "width", "height", "x", "y"]
             for attr, value in zip(attributes, args):
@@ -89,12 +92,14 @@ class Rectangle(Base):
                 setattr(self, key, value)
 
     def to_dictionary(self):
+        """ method that returs a dictionary with properties """
         return {"id": self.id, "width": self.width, "height": self.height, "x":
                 self.x, "y": self.y}
 
     """Special methods"""
 
     def __str__(self):
+        """ str special method """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
                                                        self.width, self.height)
 
