@@ -12,7 +12,7 @@ class Base:
 
     def __init__(self, id=None):
         """Base class constructor"""
-        if id is not None:
+        if id is not None and type(id) is int:
             self.id = id
             Base.__nb_objects += 1
         else:
@@ -25,13 +25,11 @@ class Base:
         """writes the JSON string representation of list_objs to a file"""
         filename = cls.__name__+".json"
         list_dict=[]
-        for obj in list_objs:
-            list_dict.append(obj.to_dictionary())
+        if list_objs is not None:
+            for obj in list_objs:
+                list_dict.append(obj.to_dictionary())
         with open(filename, "w", encoding="utf-8") as file:
-            if list_dict:
-                file.write(json.dumps(list_dict))
-            else:
-                file.write("[]")
+                file.write(cls.to_json_string(list_dict))
 
     @classmethod
     def load_from_file(cls):
@@ -60,6 +58,8 @@ class Base:
     def save_csv_to_disk(cls, attrs, list_objs):
         """writes the CSV representation of list_objs to a file"""
         filename = cls.__name__ + ".csv"
+        #set lkist object to an empty list of its value is falsy
+        list_objs = list_objs or []
         with open(filename, "w", encoding="utf-8") as file:
             for index, obj in enumerate(list_objs):
                 for attr in attrs:
@@ -85,9 +85,9 @@ class Base:
         filename = cls.__name__ + ".csv"
         list_objs = []
         rows = []
-        #my goal is to recreate a dictionary representaion of the object
-        #and then use the create (a class method) to create the new object
-        #from this dictionary
+        # my goal is to recreate a dictionary representaion of the object
+        # and then use the create (a class method) to create the new object
+        # from this dictionary
         with open(filename, encoding="utf-8") as file:
             #csv.reader() returns a list containing a list representing the
             #rows of the csv file (list of list of rows)

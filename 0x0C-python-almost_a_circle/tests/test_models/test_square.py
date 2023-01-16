@@ -156,3 +156,8 @@ class TestSquare(unittest.TestCase):
         """Test the to_dictioanry() method"""
         sq1 = Square(1, 3, 4, 5)
         self.assertEqual(sq1.to_dictionary(), {"id": 5, "size": 1, "x": 3, "y": 4})
+
+    def tearDown(self):
+        """Tear down test method to reset class attribute
+        """
+        Base._Base__nb_objects = 0

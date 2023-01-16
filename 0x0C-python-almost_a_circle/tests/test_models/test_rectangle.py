@@ -160,3 +160,8 @@ class TestRectangle(unittest.TestCase):
         """Test the to_dictioanry() method"""
         rect1 = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(rect1.to_dictionary(), {"id": 5, "width": 1, "height": 2, "x": 3, "y": 4})
+
+    def tearDown(self):
+        """Tear down test method to reset class attribute
+        """
+        Base._Base__nb_objects = 0

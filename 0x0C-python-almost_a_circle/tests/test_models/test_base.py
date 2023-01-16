@@ -140,3 +140,129 @@ class TestBase(TestCase):
 
     def test_create(self):
         """test for the create() method"""
+
+        """Test for rectangle"""
+        props = {"id": 5, "width": 1, "height": 2, "x": 3, "y": 4}
+        rect = Rectangle.create(**props)
+        self.assertEqual(rect.to_dictionary(), props)
+
+        props = {"id": 5, "width": 1, "height": 2}
+        rect = Rectangle.create(**props)
+        self.assertEqual(rect.to_dictionary(), 
+                {"id": 5, "width": 1, "height": 2, "x": 0, "y": 0})
+
+        props = {"id": 5, "width": "1", "height": 2, "x": 3, "y": 4}
+        self.assertRaises(TypeError, Rectangle.create, **props)
+        props = {"id": 5, "width": 1, "height": "2", "x": 3, "y": 4}
+        self.assertRaises(TypeError, Rectangle.create, **props)
+        props = {"id": 5, "width": 1, "height": 2, "x": "3", "y": 4}
+        self.assertRaises(TypeError, Rectangle.create, **props)
+        props = {"id": 5, "width": 1, "height": 2, "x": 3, "y": "4"}
+        self.assertRaises(TypeError, Rectangle.create, **props)
+        props = {"id": 5, "width": 0, "height": 2, "x": 3, "y": 4}
+        self.assertRaises(ValueError, Rectangle.create, **props)
+        props = {"id": 5, "width": 1, "height": 0, "x": 3, "y": 4}
+        self.assertRaises(ValueError, Rectangle.create, **props)
+        props = {"id": 5, "width": 1, "height": 2, "x": -1, "y": 4}
+        self.assertRaises(ValueError, Rectangle.create, **props)
+        props = {"id": 5, "width": 1, "height": 2, "x": 3, "y": -4}
+        self.assertRaises(ValueError, Rectangle.create, **props)
+
+        """Test for square"""
+        props = {"id": 5, "size": 2, "x": 3, "y": 4}
+        sq = Square.create(**props)
+        self.assertEqual(sq.to_dictionary(), props)
+
+        props = {"id": 5, "size": 2}
+        sq = Square.create(**props)
+        self.assertEqual(sq.to_dictionary(), 
+                {"id": 5, "size": 2, "x": 0, "y": 0})
+
+        
+        props = {"id": 5, "size": "2", "x": 3, "y": 4}
+        self.assertRaises(TypeError, Square.create, **props)
+        props = {"id": 5, "size": 2, "x": "3", "y": 4}
+        self.assertRaises(TypeError, Square.create, **props)
+        props = {"id": 5, "size": 2, "x": 3, "y": "4"}
+        self.assertRaises(TypeError, Square.create, **props)
+        props = {"id": 5, "size": 0, "x": 3, "y": 4}
+        self.assertRaises(ValueError, Square.create, **props)
+        props = {"id": 5, "size": 2, "x": -3, "y": 4}
+        self.assertRaises(ValueError, Square.create, **props)
+        props = {"id": 5, "size": 2, "x": 3, "y": -4}
+        self.assertRaises(ValueError, Square.create, **props)
+
+    def test_load_from_file(self):
+        """Test the load_from_file() method"""
+
+        """For rectangles"""
+        list_rects = [Rectangle(1, 2, 3, 4, 5), Rectangle(4, 5, 6, 7, 8)]
+        Rectangle.save_to_file(list_rects)
+        new_list_rects = Rectangle.load_from_file()
+        self.assertEqual([obj.to_dictionary() for obj in list_rects],
+                [obj.to_dictionary() for obj in new_list_rects])
+
+        list_rects = []
+        Rectangle.save_to_file(list_rects)
+        new_list_rects = Rectangle.load_from_file()
+        self.assertEqual([obj.to_dictionary() for obj in list_rects],
+                [obj.to_dictionary() for obj in new_list_rects])
+
+        """For Squares"""
+        list_sqs = [Square(1, 2, 3, 4), Square(4, 5, 7, 8)]
+        Square.save_to_file(list_sqs)
+        new_list_sqs = Square.load_from_file()
+        self.assertEqual([obj.to_dictionary() for obj in list_sqs],
+                [obj.to_dictionary() for obj in new_list_sqs])
+
+        list_sqs = []
+        Square.save_to_file(list_sqs)
+        new_list_sqs = Square.load_from_file()
+        self.assertEqual([obj.to_dictionary() for obj in list_sqs],
+                [obj.to_dictionary() for obj in new_list_sqs])
+
+        list_sqs = None
+        Square.save_to_file(list_sqs)
+        new_list_sqs = Square.load_from_file()
+        self.assertEqual([],
+                [obj.to_dictionary() for obj in new_list_sqs])
+
+    def test_save_to_file_csv(self):
+        """Test the save_to_csv() fn"""
+
+        """For rectangle"""
+        Rectangle.save_to_file_csv(None)
+        self.assertEqual(Rectangle.load_from_file_csv(), [])
+
+        Rectangle.save_to_file_csv([])
+        self.assertEqual(Rectangle.load_from_file_csv(), [])
+
+        list_rects = [Rectangle(1, 2, 3, 4, 5), Rectangle(4, 5, 6, 7, 8)]
+        Rectangle.save_to_file_csv(list_rects)
+        result = Rectangle.load_from_file_csv()
+        self.assertEqual([obj.to_dictionary() for obj in result], 
+                [obj.to_dictionary() for obj in list_rects])
+        self.assertEqual(str(list_rects[0]), str(result[0]))
+
+        """For Square"""
+        Square.save_to_file_csv(None)
+        self.assertEqual(Square.load_from_file_csv(), [])
+
+        Square.save_to_file_csv([])
+        self.assertEqual(Square.load_from_file_csv(), [])
+
+        list_sqs = [Square(2, 3, 4, 5), Square(5, 6, 7, 8)]
+        Square.save_to_file_csv(list_sqs)
+        result = Square.load_from_file_csv()
+        self.assertEqual([obj.to_dictionary() for obj in result], 
+                [obj.to_dictionary() for obj in list_sqs])
+        self.assertEqual(str(list_sqs[0]), str(result[0]))
+
+    def test_load_from_file_csv(self):
+        """Test the load_from_file_csv() fn"""
+        #Refer to test_save_to_file_csv()
+
+    def tearDown(self):
+        """Tear down test method to reset class attribute
+        """
+        Base._Base__nb_objects = 0
