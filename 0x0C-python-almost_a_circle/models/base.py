@@ -81,6 +81,7 @@ class Base:
 
     @classmethod
     def load_csv_from_disk(cls, attrs):
+        """Converts a csv file into a list of objects"""
         import csv
         filename = cls.__name__ + ".csv"
         list_objs = []
@@ -93,17 +94,19 @@ class Base:
             # rows of the csv file (list of list of rows)
             rows = csv.reader(file)
             rows = list(rows)
-        for row in rows:
-            new_dict = {}
-            for attr, value in zip(attrs, row):
-                # csv.reader() returns row values as strings. since all our
-                # attributes are ints, we need to convert all value to int
-                new_dict[attr] = int(value)
-            list_objs.append(cls.create(**new_dict))
-        return list_objs
+        if rows:
+            for row in rows:
+                new_dict = {}
+                for attr, value in zip(attrs, row):
+                    # csv.reader() returns row values as strings. since all our
+                    # attributes are ints, we need to convert all value to int
+                    new_dict[attr] = int(value)
+                list_objs.append(cls.create(**new_dict))
+            return list_objs
 
     @classmethod
     def create(cls, **dictionary):
+        """ Create an instance """
         new_quadrilateral = cls(**dictionary)
         new_quadrilateral.update(**dictionary)
         return new_quadrilateral
@@ -145,6 +148,7 @@ class Base:
 
     @staticmethod
     def draw_quadrilateral(brush, quad, scale):
+        """Draw a 4 sided shape bases on the object passed in"""
         from random import choice
 
         colors = ["magenta", "gold", "red", "black",
