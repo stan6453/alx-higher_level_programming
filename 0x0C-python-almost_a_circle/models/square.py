@@ -17,7 +17,7 @@ class Square(Rectangle):
     @property
     def size(self):
         """Gets the value of size"""
-        return self.__size
+        return self.width
 
     @size.setter
     def size(self, value):
@@ -26,7 +26,6 @@ class Square(Rectangle):
         validate_dimension("width", value)
         self.width = value
         self.height = value
-        self.__size = value
 
     """Instance methids"""
 
