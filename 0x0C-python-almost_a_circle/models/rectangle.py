@@ -108,15 +108,18 @@ class Rectangle(Base):
 
 
 def validate_int(name, value):
+    """validates an int"""
     if value.__class__ is not int:
         raise TypeError("{} must be an integer".format(name))
 
 
 def validate_dimension(name, value):
+    """Validates a dimension"""
     if value <= 0:
         raise ValueError("{} must be > 0".format(name))
 
 
 def validate_position(name, value):
+    """Validates a position"""
     if value < 0:
         raise ValueError("{} must be >= 0".format(name))
