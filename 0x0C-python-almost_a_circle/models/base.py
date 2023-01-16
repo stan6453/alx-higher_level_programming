@@ -24,7 +24,7 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """writes the JSON string representation of list_objs to a file"""
-        filename = cls.__name__+".json"
+        filename = cls.__name__ + ".json"
         list_dict = []
         if list_objs is not None:
             for obj in list_objs:
@@ -39,7 +39,8 @@ class Base:
         list_objs = []
         if os.path.exists(filename):
             with open(filename, encoding="utf-8") as file:
-                # return a list of dicts that represent the objs we want to create
+                # return a list of dicts that represent the objs we want to
+                # create
                 list_dict = cls.from_json_string(file.read())
                 for a_dict in list_dict:
                     # use these dictionaries to create a list of new objects
