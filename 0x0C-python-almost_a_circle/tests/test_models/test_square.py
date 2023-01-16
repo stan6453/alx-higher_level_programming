@@ -20,6 +20,11 @@ class TestSquare(unittest.TestCase):
 
     def test_parameters(self):
         """Test sqaure class' properties and contructor parameters"""
+        
+        """Test id"""
+        self.assertEqual(Square(5), 1)
+        self.assertEqual(Square(5,3,5,5), 5)
+        self.assertEqual(Square(5), 3)
         """test size"""
         self.assertRaises(TypeError, Square)
         self.assertRaises(TypeError, Square, "4")
