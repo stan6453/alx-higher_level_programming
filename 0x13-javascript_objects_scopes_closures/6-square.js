@@ -2,10 +2,6 @@
 const BaseSqaure = require('./5-square');
 
 class Square extends BaseSqaure {
-  constructor (size) {
-    super(size);
-  }
-
   charPrint (c) {
     if (!c) {
       this.print();
