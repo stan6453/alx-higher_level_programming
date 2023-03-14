@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const fs = require('fs');
 
-if (process.argv.length <= 4) {
+if (process.argv.length < 4) {
   process.exit(1);
 }
 
