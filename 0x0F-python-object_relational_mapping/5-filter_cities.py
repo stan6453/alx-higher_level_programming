@@ -10,12 +10,16 @@ state = sys.argv[4]
 conn = MySQLdb.connect(host="localhost", port=3906, user=user_name,
                        passwd=password, db=db_name, charset="utf8")
 cur = conn.cursor()
-cur.execute(f"SELECT * FROM cities\
-        WHERE cities.state_id = (SELECT id from states\
-                                 WHERE name = %s)", (state,))
+cur.execute(f"SELECT name FROM cities\
+        WHERE state_id = (SELECT id from states\
+                          WHERE name = %s)\
+        ORDER BY id", (state,))
 
 query_rows = cur.fetchall()
+result = ''
 for row in query_rows:
-    print(row)
+    result += row[0] + ', '
+result = result[:-2]
+print(result)
 cur.close()
 conn.close()
