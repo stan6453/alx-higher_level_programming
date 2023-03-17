@@ -13,5 +13,6 @@ class State(Base):
     """
     A class representation of the State table of mysql database
     """
+    __tablename__ = "states"
     id = Column("id", Integer, primary_key=True)
     name = Column("name", String(128), nullable=False)
