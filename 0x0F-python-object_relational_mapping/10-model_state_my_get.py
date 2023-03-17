@@ -23,7 +23,9 @@ if __name__ == "__main__":
 
     name = sys.argv[3]
 
-    state = session.query(State).filter(State.name == name)\
-        .order_by(State.id).first()
+    state = session.query(State).filter(State.name == name).first()
 
-    print(f"{state.id}: {state.name}")
+    if state:
+        print(f"{state.id}")
+    else:
+        print("Not found")
