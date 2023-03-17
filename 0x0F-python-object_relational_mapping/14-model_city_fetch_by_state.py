@@ -22,8 +22,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result = session.query(City, State)
-    .filter(State.id == City.state_id).order_by(City.id).all()
+    result = session.query(City, State)\
+        .filter(State.id == City.state_id).order_by(City.id).all()
 
     if result:
         for state, city in result:
