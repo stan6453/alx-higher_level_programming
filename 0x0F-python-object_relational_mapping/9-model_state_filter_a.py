@@ -25,4 +25,5 @@ if __name__ == "__main__":
         .order_by(State.id).all()
 
     for state in states:
-        print(f"{state.id}: {state.name}")
+        if "a" in state.name:
+            print(f"{state.id}: {state.name}")
