@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Connect to myqsl DB from python"""
+"""Connect to mysql DB from python"""
 
 if __name__ == "__main__":
     import sys
