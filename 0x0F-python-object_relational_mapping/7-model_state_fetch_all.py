@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Query the DB for states record using SQLAlchemy
+"""
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
