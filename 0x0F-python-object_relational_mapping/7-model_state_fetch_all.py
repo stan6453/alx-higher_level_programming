@@ -23,5 +23,5 @@ if __name__ == "__main__":
 
     states = session.query(State).order_by(State.id).all()
 
-    for index, state in enumerate(states):
-        print(f"{index}: {state}")
+    for state in states:
+        print(f"{state.id}: {state.name}")
