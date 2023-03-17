@@ -17,6 +17,7 @@ if __name__ == "__main__":
                 ORDER BY id ASC".format(state))
     query_rows = cur.fetchall()
     for row in query_rows:
-        print(row)
+        if state[1] == sys.argv[4]:
+            print(row)
     cur.close()
     conn.close()
