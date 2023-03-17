@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-State Model
+SQLAlchemy State Model
 """
 
 from sqlalchemy import Column, Integer, String
