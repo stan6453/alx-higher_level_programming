@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-prints all City objects from the database hbtn_0e_14_usa
+lists all State objects, and corresponding City objects,
+contained in the database hbtn_0e_101_usa
 """
 
 import sys
@@ -22,12 +23,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result = session.query(State, City).filter(State.id == City.state_id)\
-        .order_by(State.id).order_by(City.id).all()
+    result = session.query(State).order_by(State.id).all()
 
-    processed = []
-    for state, city in result:
-        if state.name not in processed:
-            processed.append(state.name)
-            print(f'{state.id}: {state.name}')
-        print(f'\t{city.id}: {city.name}')
+    for state in result:
+        print(f'{state.id}: {state.name}')
+        for city in state.cities:
+            print(f'\t{city.id}: {city.name}')
