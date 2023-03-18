@@ -26,3 +26,4 @@ if __name__ == "__main__":
 
     if users_to_delete:
         session.delete(users_to_delete)
+        session.commit()
