@@ -26,5 +26,5 @@ if __name__ == "__main__":
         .filter(State.id == City.state_id).order_by(City.id).all()
 
     if result:
-        for state, city in result:
+        for city, state in result:
             print(f"{state.name}: ({city.id}) {city.name}")
