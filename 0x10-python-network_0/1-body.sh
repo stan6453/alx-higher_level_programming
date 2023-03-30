@@ -1,3 +1,3 @@
 #!/bin/bash
 # sends a GET request to the URL, and displays the body of the response
-curl -si "$1" | awk 'NR == 1 && $2 == 200 {show_body = 1} length($0) == 1 {body = 1; next} show_body == 1 && body == 1 {print $0}'
+curl -sSL -w '%{http_code}\n' "$1" | sed -n '/^200$/ {n;p;}'
