@@ -7,5 +7,5 @@ found in the header of the response.
 
 import urllib.request
 from sys import argv
-res = urllib.request.urlopen(argv[1])
-print(res.headers.get("X-Request-Id"))
+with urllib.request.urlopen(argv[1]) as res:
+    print(res.headers.get("X-Request-Id"))
