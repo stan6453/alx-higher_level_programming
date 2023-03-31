@@ -20,7 +20,7 @@ if __name__ == "__main__":
         list1 = res.json()
 
         list1.sort(reverse=True,
-                  key=lambda dict1: dict1['commit']['author']['date'])
+                   key=lambda dict1: dict1['commit']['author']['date'])
 
         for elem in list1:
             print(
