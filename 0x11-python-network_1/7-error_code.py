@@ -8,8 +8,8 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-        with requests.get(argv[1]) as res:
-            if res.status_code >= 400:
-                  print(f"Error code: {res.status_code}")
-            else:
-                  print(res.text)
+    with requests.get(argv[1]) as res:
+        if res.status_code >= 400:
+            print(f"Error code: {res.status_code}")
+        else:
+            print(res.text)
