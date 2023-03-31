@@ -18,6 +18,6 @@ if __name__ == "__main__":
             if len(dict1) == 0:
                 print("No result")
             else:
-                print(f'[{dict1["id"]}] {dict1["name"]}')
+                print("[{}] {}".format(dict1["id"], dict1["name"]))
         except requests.exceptions.JSONDecodeError as err:
             print('Not a valid JSON')
