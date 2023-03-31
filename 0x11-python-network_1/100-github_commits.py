@@ -16,16 +16,11 @@ if __name__ == "__main__":
     }
     with requests\
         .get(f'https://api.github.com/repos/{argv[2]}/{argv[1]}/commits',
-             headers=headers) as res:
+             headers=headers, parameter ={'per_page': 10}) as res:
         list1 = res.json()
 
         list1.sort(reverse=True,
                    key=lambda dict1: dict1['commit']['author']['date'])
-        count = 0
         for elem in list1:
             print(
-                f"{elem['sha']} \
-{elem['commit']['author']['name']}")
-            count += 1
-            if (count == 10):
-                exit(0)
+                f"{elem['sha']} {elem['commit']['author']['name']}")
