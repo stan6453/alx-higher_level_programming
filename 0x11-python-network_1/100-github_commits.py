@@ -21,8 +21,11 @@ if __name__ == "__main__":
 
         list1.sort(
                    key=lambda dict1: dict1['commit']['author']['date'])
-
+        count = 0
         for elem in list1:
             print(
                 f"{elem['sha']} \
 {elem['commit']['author']['name']}")
+            count += 1
+            if (count == 10):
+                exit(0)
