@@ -12,5 +12,7 @@ if __name__ == "__main__":
                            headers={'Authorization': f"Bearer {argv[2]}"})\
                 as res:
             print(res.json().get('id'))
-    except requests.exceptions.ConnectionError:
+    except requests.exceptions.ConnectionError as err:
+        pass
+    except requests.exceptions.ConnectTimeout as err:
         pass
