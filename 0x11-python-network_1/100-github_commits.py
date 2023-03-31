@@ -23,4 +23,4 @@ if __name__ == "__main__":
                    key=lambda dict1: dict1['commit']['author']['date'])
         for elem in list1:
             print(
-                f"{elem['sha']} {elem['commit']['author']['name']}")
+                f"{elem['sha']}: {elem['commit']['author']['name']}")
