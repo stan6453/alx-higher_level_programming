@@ -9,7 +9,7 @@ from sys import argv
 if __name__ == "__main__":
     try:
         with requests.post('https://api.github.com/user',
-                          auth=(f'{argv[1]}',f'{argv[2]}'))\
+                           auth=(f'{argv[1]}', f'{argv[2]}'))\
                 as res:
             print(res.json().get('id'))
     except requests.exceptions.ConnectionError as err:
