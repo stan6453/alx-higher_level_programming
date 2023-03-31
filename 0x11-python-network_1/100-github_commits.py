@@ -18,9 +18,6 @@ if __name__ == "__main__":
         .get(f'https://api.github.com/repos/{argv[2]}/{argv[1]}/commits',
              headers=headers, params={'per_page': 10}) as res:
         list1 = res.json()
-
-        list1.sort(reverse=True,
-                   key=lambda dict1: dict1['commit']['author']['date'])
         for elem in list1:
             print(
                 f"{elem['sha']}: {elem['commit']['author']['name']}")
