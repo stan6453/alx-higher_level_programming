@@ -9,8 +9,8 @@ from sys import argv
 if __name__ == "__main__":
     try:
         with requests.post('https://api.github.com/user',
-                        headers={'Authorization': f"Bearer {argv[2]}"}) as res:
+                           headers={'Authorization': f"Bearer {argv[2]}"})\
+                as res:
             print(res.json().get('id'))
     except requests.exceptions.ConnectionError:
         pass
-
