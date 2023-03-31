@@ -5,11 +5,10 @@ http://0.0.0.0:5000/search_user with the letter as a parameter.
 """
 
 import urllib.parse
-import urllib
 import urllib.request
 from sys import argv
 if __name__ == "__main__":
-    url = 'http://4f0e93769549.a6cecdaa.alx-cod.online:5000/search_user'
+    url = 'http://0.0.0.0:5000/search_user'
     value = {'q': ''}
     if len(argv) > 1:
         value = {'q': argv[1]}
