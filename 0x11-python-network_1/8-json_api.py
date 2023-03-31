@@ -13,9 +13,6 @@ if __name__ == "__main__":
         values = {'q': argv[1][0]}
 
     with requests.post(url, data=values) as res:
-        if len(res.text) < 1:
-            print("No result")
-            exit(1)
         try:
             dict1 = res.json()
             if len(dict1) == 0:
