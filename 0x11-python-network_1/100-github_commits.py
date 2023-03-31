@@ -17,12 +17,12 @@ if __name__ == "__main__":
     with requests\
         .get(f'https://api.github.com/repos/{argv[2]}/{argv[1]}/commits',
              headers=headers) as res:
-        list = res.json()
+        list1 = res.json()
 
-        list.sort(reverse=True,
+        list1.sort(reverse=True,
                   key=lambda dict1: dict1['commit']['author']['date'])
 
-        for elem in list:
+        for elem in list1:
             print(
                 f"{elem['sha']} \
 {elem['commit']['author']['name']}")
