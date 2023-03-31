@@ -19,7 +19,7 @@ if __name__ == "__main__":
              headers=headers) as res:
         list = res.json()
 
-        list.sort(
+        list.sort(reverse=True,
                   key=lambda dict1: dict1['commit']['author']['date'])
 
         for elem in list:
