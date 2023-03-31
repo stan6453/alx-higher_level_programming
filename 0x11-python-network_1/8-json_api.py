@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     with requests.post(url, data=values) as res:
         if len(res.text) < 1:
-            print('Not a valid JSON')
+            print("No result")
             exit(1)
         try:
             dict1 = res.json()
