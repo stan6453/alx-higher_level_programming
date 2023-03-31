@@ -15,7 +15,7 @@ if __name__ == "__main__":
     with requests.post(url, data=values) as res:
         try:
             obj = res.json()
-            if (len(obj)) == 0:
+            if len(obj) == 0:
                 print("No result")
             else:
                 print(f'[{obj["id"]}] {obj["name"]}')
