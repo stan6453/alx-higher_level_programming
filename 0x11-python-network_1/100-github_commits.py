@@ -19,8 +19,8 @@ if __name__ == "__main__":
              headers=headers) as res:
         list1 = res.json()
 
-        list1.sort(
-            key=lambda dict1: dict1['commit']['author']['date'])
+        list1.sort(reverse=True,
+                   key=lambda dict1: dict1['commit']['author']['date'])
         count = 0
         for elem in list1:
             print(
