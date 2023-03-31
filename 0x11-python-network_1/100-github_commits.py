@@ -16,7 +16,7 @@ if __name__ == "__main__":
     }
     with requests\
         .get(f'https://api.github.com/repos/{argv[2]}/{argv[1]}/commits',
-             headers=headers, parameter={'per_page': 10}) as res:
+             headers=headers, params={'per_page': 10}) as res:
         list1 = res.json()
 
         list1.sort(reverse=True,
