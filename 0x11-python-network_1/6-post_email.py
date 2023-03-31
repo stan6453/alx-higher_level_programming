@@ -13,4 +13,4 @@ if __name__ == "__main__":
     values = {'email': argv[2]}
 
     with requests.post(argv[1], data=values) as res:
-        print(res.read().decode('utf-8'))
+        print(res.text)
