@@ -19,5 +19,5 @@ if __name__ == "__main__":
                 print("No result")
             else:
                 print("[{}] {}".format(dict1["id"], dict1["name"]))
-        except requests.exceptions.JSONDecodeError as err:
+        except Exception as err:
             print('Not a valid JSON')
